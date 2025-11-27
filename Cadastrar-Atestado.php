@@ -1,0 +1,72 @@
+<h1>Cadastrar Atestado</h1>
+<form action="?page=salvar-atestado" method="POST">
+    <input type="hidden" name="acao" value="cadastrar">
+    <div class="mb-3">
+        <label>Nome do Paciente</label>
+   <select name="paciente_id_paciente" class="form-control">
+    <option> -- Escolha um Paciente -- </option>
+    <?php
+    $sql_1 = "SELECT id_paciente, nome_paciente FROM paciente";
+
+    $res_1 = $conn->query($sql_1);
+
+    $qtd_1 = $res_1->num_rows;
+    
+    if($qtd_1 > 0){
+        while($row_1 = $res_1->fetch_object()){
+            echo "<option value='".$row_1->id_paciente."'>".$row_1->nome_paciente."</option>";
+        }
+    }else{
+        echo "<option> Não há pacientes</option>";
+    }
+    
+    ?>
+   </select>
+    </div>
+
+    <div class="mb-3">
+        <label>Nome do Médico</label>
+   <select name="medico_id_medico" class="form-control">
+    <option> -- Escolha um Médico -- </option>
+    <?php
+    $sql_2 = "SELECT id_medico, nome_medico FROM medico";
+
+    $res_2 = $conn->query($sql_2);
+
+    $qtd_2 = $res_2->num_rows;
+
+    if($qtd_2 > 0){
+        while($row_2 = $res_2->fetch_object()){
+            echo "<option value='".$row_2->id_medico."'>".$row_2->nome_medico."</option>";
+        }
+    }else{
+        echo "<option> Não há médicos</option>";
+    }
+    
+    ?>
+   </select>
+    </div>
+    <div class="mb-3">
+		<label>Data de Emissao</label>
+		<input type="date" name="data_emissao" class="form-control">
+	</div>
+	<div class="mb-3">
+		<label>Motivo</label>
+        <input type="text" name="motivo" class="form-control">
+	</div>
+	<div class="mb-3">
+		<label>Afastamento</label>
+		<input type="text" name="afastado" class="form-control">
+	</div>
+	<div class="mb-3">
+		<label>Data do Inicio</label>
+        <input type="date" name="data_inicio" class="form-control">
+	</div>
+	<div class="mb-3">
+		<label>Data do Fim</label>
+        <input type="date" name="data_fim" class="form-control">
+	</div>
+	<div class="mb-3">
+		<button type="submit" class="btn btn-success">Salvar</button>
+
+</form>
