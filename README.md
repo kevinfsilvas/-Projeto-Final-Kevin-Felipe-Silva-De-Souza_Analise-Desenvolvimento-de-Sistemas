@@ -1,1 +1,172 @@
 # -Projeto-Final-Kevin-Felipe-Silva-De-Souza_Analise-Desenvolvimento-de-Sistemas
+
+ Sistema de Agendamento Clínico – clinica_kevin
+
+Este projeto é um sistema de gerenciamento e agendamento de consultas médicas, permitindo o cadastro de pacientes, médicos, consultas, usuários administrativos e emissão de atestados.
+O sistema foi desenvolvido utilizando PHP + MySQL/MariaDB como base para armazenamento dos dados.
+
+Funcionalidades do Sistema
+👤 Pacientes
+
+Cadastro de pacientes
+
+Edição e consulta de informações
+
+Histórico de consultas
+
+Vinculação com atestados
+
+🩺 Médicos
+
+Cadastro de médicos
+
+CRM e especialidade
+
+Visualização da agenda
+
+Relacionamento com consultas e atestados
+
+🗓️ Consultas
+
+Agendamento de consultas
+
+Associação entre paciente e médico
+
+Definição de data, hora e descrição do atendimento
+
+Gerenciamento completo pelo administrador
+
+📄 Atestados Médicos
+
+Emissão de atestados após consulta
+
+Registro de motivo, período de afastamento e datas
+
+Vinculação automática ao médico e paciente
+
+🔐 Usuários do Sistema
+
+Login
+
+Controle de acesso por tipo (ex.: ADM, Recepção, Médico)
+
+Armazenamento de senha
+
+Identificação por nível (campo tipo)
+
+Estrutura do Banco de Dados
+
+A base clinica_kevin contém 5 tabelas principais:
+
+📍 1. paciente
+
+Armazena os dados do paciente.
+
+Campo	Tipo	Descrição
+id_paciente	INT	Identificador
+nome_paciente	VARCHAR(100)	Nome completo
+cpf_paciente	VARCHAR(14)	CPF
+data_nasc_paciente	DATE	Data de nascimento
+sexo_paciente	CHAR(1)	Sexo
+fone_paciente	VARCHAR(20)	Telefone
+email_paciente	VARCHAR(100)	E-mail
+endereco_paciente	VARCHAR(100)	Endereço
+📍 2. medico
+Campo	Tipo	Descrição
+id_medico	INT	Identificador
+nome_medico	VARCHAR(100)	Nome
+crm_medico	VARCHAR(10)	CRM
+especialidade_medico	VARCHAR(20)	Especialidade
+📍 3. consulta
+
+Tabela que conecta paciente → médico.
+
+Campo	Tipo
+id_consulta	INT
+paciente_id_paciente	INT
+medico_id_medico	INT
+data_consulta	DATE
+hora_consulta	TIME
+descricao_consulta	TEXT
+📍 4. atestado
+
+Gerado após a consulta.
+
+Campo	Tipo
+id_atestado	INT
+paciente_id_paciente	INT
+medico_id_medico	INT
+data_emissao	DATE
+motivo	VARCHAR(255)
+afastado	VARCHAR(255)
+data_inicio	DATE
+data_fim	DATE
+📍 5. usuarios
+
+Para login no sistema.
+
+Campo	Tipo
+id	INT
+nome	VARCHAR(255)
+email	VARCHAR(255)
+usuario	VARCHAR(255)
+senha	VARCHAR(255)
+tipo	CHAR(1)
+
+🔗 Relacionamentos do Sistema
+
+Paciente 1 — N Consulta
+
+Médico 1 — N Consulta
+
+Paciente 1 — N Atestado
+
+Médico 1 — N Atestado
+
+⚙️ Tecnologias Utilizadas
+
+PHP 8+
+
+MySQL/MariaDB 10.4+
+
+phpMyAdmin
+
+HTML + CSS + Bootstrap
+
+XAMPP/Laragon/WAMP (ambiente)
+
+🚀 Como Importar o Banco
+
+Abra o phpMyAdmin
+
+Clique em Importar
+
+Selecione o arquivo .sql
+
+Aguarde o carregamento
+
+A base clinica_kevin aparecerá pronta
+
+📁 Estrutura Recomendada do Sistema (PHP)
+_clinica_kevin
+ ├── conexao.php
+ ├── pacientes/
+ ├── medicos/
+ ├── consultas/
+ ├── atestados/
+ ├── usuarios/
+ ├── assets/
+ └── index.php
+ 
+ 🔐 Login do Sistema (exemplo do seu banco)
+
+Usuário: kevin
+Senha: 1234567m
+Tipo: 1 (Administrador)
+
+📞 Contato do Autor
+
+Desenvolvedor: Kevin Felipe
+GitHub: 
+E-mail: kevin.fsilvas@gmail.com
+
