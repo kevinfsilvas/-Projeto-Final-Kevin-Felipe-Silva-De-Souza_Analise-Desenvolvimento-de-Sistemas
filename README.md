@@ -164,9 +164,137 @@ Usuário: kevin
 Senha: 1234567m
 Tipo: 1 (Administrador)
 
-📞 Contato do Autor
+Aplicação CRUD no Projeto
 
-Desenvolvedor: Kevin Felipe
-GitHub: 
-E-mail: kevin.fsilvas@gmail.com
+
+A seguir apresento como o CRUD foi aplicado em cada entidade do sistema.
+
+📌 CRUD – Paciente
+
+Operação	- Descrição
+Create	- Cadastrar novo paciente
+Read - Listar pacientes cadastrados
+Update -	Editar informações do paciente
+Delete -	Excluir paciente
+
+📌 CRUD – Médico
+Operação -	Descrição
+Create -	Cadastro de médico
+Read -	Visualização dos médicos
+Update -	Alterar CRM ou especialidade
+Delete -	Apagar médico
+
+📌CRUD – Consulta
+Operação -	Descrição
+Create -	Agendar consulta
+Read -	Mostrar consultas agendadas
+Update -	Reagendar horário
+Delete -	Cancelar consulta
+
+📌CRUD – Atestado
+Operação - Descrição
+Create -	Emitir atestado
+Read -	Listar atestados emitidos
+Update -	Ajustar datas de afastamento
+Delete -	Remover atestado
+
+Cadastro de Paciente (Create)
+INÍCIO
+    LER nome, cpf, data_nasc, sexo, telefone, email, endereço
+    SE nome NÃO ESTÁ VAZIO E cpf NÃO ESTÁ VAZIO ENTÃO
+        INSERIR dados na tabela PACIENTE
+        EXIBIR "Cadastro realizado com sucesso"
+    SENÃO
+        EXIBIR "Erro: Preencha todos os campos obrigatórios"
+    FIM-SE
+FIM
+
+Listagem de Consultas (Read)
+INÍCIO
+    CONSULTAR tabela CONSULTA
+    PARA cada registro encontrado FAÇA
+        EXIBIR id_consulta, paciente, médico, data, hora, descrição
+    FIM-PARA
+FIM
+
+Atualizar Consulta (Update)
+INÍCIO
+    LER id_consulta
+    LER nova_data, nova_hora
+    SE id_consulta existe NA TABELA CONSULTA ENTÃO
+        ATUALIZAR consulta SET data = nova_data, hora = nova_hora
+        EXIBIR "Consulta atualizada com sucesso"
+    SENÃO
+        EXIBIR "Erro: Consulta não encontrada"
+    FIM-SE
+FIM
+
+Excluir Médico (Delete)
+INÍCIO
+    LER id_medico
+    SE id_medico EXISTE NA TABELA MEDICO ENTÃO
+        REMOVER registro correspondente
+        EXIBIR "Médico excluído"
+    SENÃO
+        EXIBIR "Médico não encontrado"
+    FIM-SE
+FIM
+
+Representação do Fluxograma (texto)
+[INÍCIO]
+   ↓
+[LOGIN DO USUÁRIO]
+   ↓
+[VALIDAR USUÁRIO]
+   ├── NÃO → [ERRO] → volta ao LOGIN
+   └── SIM → continua
+   ↓
+[SELECIONAR MÉDICO]
+   ↓
+[VER HORÁRIOS DISPONÍVEIS]
+   ↓
+[SELECIONAR DATA E HORA]
+   ↓
+[GRAVAR CONSULTA NO BANCO]
+   ↓
+[EXIBIR MENSAGEM DE SUCESSO]
+   ↓
+[FIM]
+
+Algoritmo Agendar_Consulta
+Algoritmo Agendar_Consulta
+
+Início
+    Escreva("Digite o código do paciente: ")
+    Leia id_paciente
+
+    Escreva("Digite o código do médico: ")
+    Leia id_medico
+
+    Escreva("Informe a data da consulta: ")
+    Leia data_consulta
+
+    Escreva("Informe o horário da consulta: ")
+    Leia hora_consulta
+
+    Se (id_paciente existe) E (id_medico existe) Então
+        Inserir na tabela CONSULTA:
+            (paciente_id_paciente,
+             medico_id_medico,
+             data_consulta,
+             hora_consulta)
+        Escreva("Consulta agendada com sucesso!")
+    Senão
+        Escreva("Erro: paciente ou médico não encontrado.")
+    FimSe
+Fim
+
+
+
+
+
+
+
+
+
 
